@@ -1,0 +1,3 @@
+django
+install django-tempus-dominus
+django-widget-tweaks

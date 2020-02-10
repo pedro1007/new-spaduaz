@@ -1,0 +1,119 @@
+{% block sidebar %}
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'index' %}">
+          <!--<div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-address-card"></i>
+          </div>-->
+          <div class="sidebar-brand-text mx-3">SAPDUAZ <!--sup>2</sup--></div>
+        </a>
+  
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+  
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}">
+            <i class="fas fa-fw fa-home"></i>
+            <span>Inicio</span></a>
+        </li>
+  
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+  
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Acciones
+        </div>
+  
+        <!-- Nav Item - Docentes Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDocente" aria-expanded="true" aria-controls="collapseDocente">
+            <i class="fas fa-fw fa-user-tie"></i>
+            <span>Docentes</span>
+          </a>
+          <div id="collapseDocente" class="collapse" aria-labelledby="headingDocentes" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Acciones:</h6>
+              <a class="collapse-item" href="{% url 'docente:docente_listar' %}">Lista Docentes</a>
+              <a class="collapse-item" href="{% url 'docente:docente_nuevo' %}">Nuevo Docente</a>
+            </div>
+          </div>
+        </li>
+  
+        <!-- Nav Item - Nivel Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNivel" aria-expanded="true" aria-controls="collapseNivel">
+            <i class="fas fa-fw fa-layer-group"></i>
+            <span>Nivel</span>
+          </a>
+          <div id="collapseNivel" class="collapse" aria-labelledby="headingNivel" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Acciones</h6>
+              <a class="collapse-item" href="{% url 'nivel:nivel_listar' %}">Lista de Niveles</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Nav Item - Base Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBase" aria-expanded="true" aria-controls="collapseBase">
+              <i class="fas fa-fw fa-suitcase"></i>
+              <span>Base</span>
+            </a>
+            <div id="collapseBase" class="collapse" aria-labelledby="headingBase" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                  <h6 class="collapse-header">Acciones</h6>
+                  <a class="collapse-item" href="{% url 'base:base_listar' %}">Lista de Bases</a>
+              </div>
+            </div>
+          </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInterrupcion" aria-expanded="true" aria-controls="collapseInterrupcion">
+              <i class="fas fa-fw fa-user-clock"></i>
+              <span>Interrupciones</span>
+            </a>
+            <div id="collapseInterrupcion" class="collapse" aria-labelledby="headingInterrupcion" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                  <h6 class="collapse-header">Acciones</h6>
+                  <a class="collapse-item" href="#">Lista</a>
+              </div>
+            </div>
+        </li>
+
+        <!-- Catalogos-->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCatalogo" aria-expanded="true" aria-controls="collapseCatalogo">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Catálogos</span>
+          </a>
+          <div id="collapseCatalogo" class="collapse" aria-labelledby="headingCatalogo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Catalogos</h6>
+                <a class="collapse-item" href="{% url 'docente:incidencias_listar' %}">Categorias Incidencias</a>
+{#                <a class="collapse-item" href="{% url 'docente:grados_listar' %}">Categorias Grados</a>#}
+                <a class="collapse-item" href="{% url 'docente:escuelas_listar' %}">Escuelas</a>
+                <a class="collapse-item" href="{% url 'docente:unidades_listar' %}">Unidades Academicas</a>
+                <a class="collapse-item" href="{% url 'docente:programas_listar' %}">Programas</a>
+                <a class="collapse-item" href="{% url 'docente:materias_listar' %}">Materias</a>
+                <a class="collapse-item" href="{% url 'docente:cuerpos_listar' %}">Cuerpos Academicos</a>
+                <a class="collapse-item" href="{% url 'nivel:bandera_listar' %}">Banderas</a>
+                <a class="collapse-item" href="{% url 'nivel:codificacion_listar' %}">Codificaciones</a>
+                <a class="collapse-item" href="#">Estados</a>
+                <a class="collapse-item" href="#">Municipios</a>
+            </div>
+          </div>
+        </li>
+  
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+  
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+  
+      </ul>  
+{% endblock sidebar %}

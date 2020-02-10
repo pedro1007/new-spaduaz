@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load widget_tweaks %}
+
+{% block extrahead %}
+    {{ form_nivel.media }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Nuevo Nivel para docente {{docente}}</h6>
+        </div>
+        <div class="card-body">
+            <form method="post" class="form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>Informacion del Nivel</h3>
+                {{ form_nivel.as_p }}
+                <h3>Información del Oficio</h3>
+                {{ form_oficio.as_p }}
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Editar Docente</h6>
+        </div>
+        <div class="card-body">
+            <form method="post" class="form" enctype="multipart/form-data">
+                {% csrf_token %}
+                Datos Personales
+                {{ form_personales.as_p }}
+                Datos Laborales
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

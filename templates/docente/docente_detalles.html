@@ -1,0 +1,173 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Detalles de {{ personales.nombres }} {{ personales.ap_paterno }} {{ personales.ap_materno }}</h6>
+    </div>
+    <h3>Datos Personales</h3>
+    <hr>
+    <div class="card-body">
+        <label>Nombre</label>
+        <p>{{ personales.nombres }}{{ personales.ap_paterno }}{{ personales.ap_materno }}</p>
+        <label>Fecha de Nacimiento</label>
+        <p>{{ personales.fecha_nacimiento }}</p>
+        <label>RFC</label>
+        <p>{{ personales.rfc }}</p>
+        <label>CURP</label>
+        <p>{{ personales.curp }}</p>
+        <label>Numero de Seguro Social</label>
+        <p>{{ personales.nss }}</p>
+        <label>Sexo</label>
+        <p>{{ personales.sexo }}</p>
+        <label>Estado civil</label>
+        <p>{{ personales.estado_civil }}</p>
+        <label>Domicilio</label>
+        <p>{{ personales.domicilio }}</p>
+        <label>Municipio</label>
+        <p>{{ personales.municipio }}</p>
+        <label>Estatus del docente</label>
+        <p>{% if docente.status %}
+            Activo
+            {% else %}
+            Inactivo
+            {% endif %}
+        </p>
+    </div>
+    <h3>Datos Laborales</h3>
+    <hr>
+    <div class="card-body">
+        <label>Matricula de Docente</label>
+        <p>{{ laborales.matricula_docente }}</p>
+        <label>Matricula de Nómina</label>
+        <p>{{ laborales.matricula_nomina }}</p>
+        <label>Fecha de ingreso</label>
+        <p>{{ laborales.fecha_ingreso }}</p>
+        <label>Numero de expediente</label>
+        <p>{{ laborales.no_expediente }}</p>
+        <label>Exclusividad con la UAZ</label>
+        {% if laborales.exclusivo %}
+            <p>Es exclusivo</p>
+            {% else %}
+            <p>No es exclusivo</p>
+            <label>Observaciones de exclusividad</label>
+            <p>{{ laborales.observaciones_exc }}</p>
+            {% endif %}
+
+        <label>Observaciones de exclusividad</label>
+        <p>{{ laborales.observaciones_exc }}</p>
+        <label>CVU</label>
+        <p>{{ laborales.cvu }}</p>
+        <label>Cuerpo Academico</label>
+        <p>{{ laborales.cuerpo_academico }}</p>
+        <label>Observaciones Cuerpo Academico</label>
+        <p>{{ laborales.observaciones_c_a }}</p>
+        <label>Programa</label>
+        <p>{{ laborales.programa }}</p>
+        <label>Perfil</label>
+        <p>Perfil</p>
+    </div>
+    <h3>Conacyt</h3>
+    <hr>
+    <div class="card-body">
+        {% for con in conacyt %}
+            <div>
+                <p>{{ con.numero_proyecto }}</p>
+                <p>{{ con.nombre_proyecto }}</p>
+                <p>{{ con.fecha_inicio }}</p>
+                <p>{{ con.fecha_fin }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <h3>Prodep</h3>
+    <hr>
+    <div class="card-body">
+        {% for pro in prodep %}
+            <div>
+                <p>{{ pro.clave }}</p>
+                <p>{{ pro.descripcion }}</p>
+                <p>{{ pro.fecha_inicio }}</p>
+                <p>{{ pro.fecha_fin }}</p>
+                <p>{{ pro.imagen_prodep }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <h3>Sni</h3>
+    <hr>
+    <div class="card-body">
+        {% for s in sni %}
+            <div>
+                <p>{{ s.clave }}</p>
+                <p>{{ s.descripcion }}</p>
+                <p>{{ s.fecha_inicio }}</p>
+                <p>{{ s.fecha_fin }}</p>
+                <p>{{ s.nivel }}</p>
+                <p><a href="{{ MEDIA_URL }}{{ s.imagen_sni }}">{{ s.imagen_sni }}</a></p>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <h3>Grados Academicos</h3>
+    <hr>
+    <div class="card-body">
+        <button class="btn btn-success" href="{% url 'docente:grado_nuevo' personales.pk %}"><i class="fas fa-fw fa-upload"></i> Agregar grado academico</button>
+        <p></p>
+        
+        <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Escuela</th>
+                        <th>Fecha obtencion</th>
+                        <th>Categoria Grados</th>
+                        <th>Nombre Estudio</th>
+                        <th>Cedula</th>
+                        <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Escuela</th>
+                        <th>Fecha obtencion</th>
+                        <th>Categoria Grados</th>
+                        <th>Nombre Estudio</th>
+                        <th>Cedula</th>
+                        <th>Acciones</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+          
+                      {% for grado in grados %}
+                          <tr>
+                              <td>{{grado.id}}</td>
+                              <td>{{grado.escuela}}</td>
+                              <td>{{grado.fecha_obtencion}}</td>
+                              <td>{{grado.categoria_grados}}</td>
+                              <td>{{grado.nombre_estudio}}</td>
+                              <td>{{grado.cedula}}</td>
+                              <td>
+                                <div class="dropdown mb-4">
+                                    <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Acciones
+                                    </button>
+                                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-info-circle"></i>Editar</a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-pen-square"></i>Eliminar</a>
+                                    </div>
+                                </div>
+                            </td>
+                          </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
